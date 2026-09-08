@@ -1,0 +1,18 @@
+experimentName: MLP_EUC_flops_Search
+trialConcurrency: 2
+# maxExecDuration: 1h
+maxTrialNumber: 150
+
+searchSpaceFile: search_space.json
+Tuner:
+  Name: Evolution #PPOTuner #TPE
+  classArgs:
+    optimize_mode: maximize
+trialCommand: python mlp-distance.py --distance 'euc'
+trialGpuNumber: 1
+trainingService:
+  platform: local
+  useActiveGpu: true
+# metric:
+#   name: AUC  # The metric you want to optimize (e.g., 'AUC', 'Accuracy', etc.)
+#   optimize_mode: maximize  # Set to "maximize" for higher is better, or "minimize" for lower is better
